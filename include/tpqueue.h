@@ -10,14 +10,11 @@ class TPQueue {
 
  public:
     TPQueue() :begin(0), end(0) {}
-    int isSize() {
-        return end - begin;
-    }
     void push(T value) {
         int temp = end++;
         bool flag = true;
         while (flag) {
-            if ((begin <= temp) && (value.prior > arr[temp % size].prior)) {
+            if ((begin <= --temp) && (value.prior > arr[temp % size].prior)) {
                 arr[(temp + 1) % size] = arr[temp % size];
             } else {
                 flag = false;
